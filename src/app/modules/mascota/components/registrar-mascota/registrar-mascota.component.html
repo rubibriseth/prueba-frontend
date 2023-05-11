@@ -16,7 +16,7 @@
             <label  class="form-label">Nombre de la Mascota</label>
             
 
-            <input type="text" class="form-control" id="inputEmail4" formControlName="nombre">
+            <input type="text" class="form-control styleHeight" id="inputEmail4" formControlName="nombre">
             <div class="mt-1 mb-2" *ngIf="campoEsValido('nombre')">
                 <span class="form-text text-danger position-absolute " > {{valorErrorMsg('nombre')}}</span>
             </div>
@@ -24,7 +24,7 @@
 
             <div class="col-md-6">
             <label  class="form-label">Raza</label>
-            <select  class="form-select" formControlName="raza">
+            <select  class="form-select styleHeight" formControlName="raza">
                 <option selected [value]="">Seleccione...</option>
                 <option *ngFor="let raza of this.listaRaza" [value]="raza.nombre">{{ raza.nombre}}</option>
             </select>
@@ -35,7 +35,7 @@
             
             <div class="col-md-6 py-3">
             <label for="inputCity" class="form-label">Edad</label>
-            <input type="text" class="form-control" id="inputCity" formControlName="edad">
+            <input type="text" class="form-control styleHeight" id="inputCity" formControlName="edad">
             <div class="mt-1 mb-2" *ngIf="campoEsValido('edad')">
                 <span class="form-text text-danger position-absolute " > {{valorErrorMsg('edad')}}</span>
             </div>
@@ -43,7 +43,7 @@
 
             <div class="col-md-6 py-3">
                 <label for="inputCity" class="form-label">Peso</label>
-                <input type="text" class="form-control" id="inputCity" formControlName="peso">
+                <input type="text" class="form-control styleHeight" id="inputCity" formControlName="peso">
                 <div class="mt-1 mb-2" *ngIf="campoEsValido('peso')">
                     <span class="form-text text-danger position-absolute " > {{valorErrorMsg('peso')}}</span>
                 </div>

@@ -8,10 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TabViewModule } from 'primeng/tabview';
-import { HomeComponent } from './modules/home/home.component';
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
     //HomeComponent
   ],
   imports: [
