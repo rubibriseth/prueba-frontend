@@ -16,11 +16,14 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import { ConfirmationService } from "primeng/api";
+import { ConfirmationService, MessageService } from "primeng/api";
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { TabViewModule } from 'primeng/tabview';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+
 import { ListadoHistorialVacunasComponent } from '../historial/components/listado-historial-vacunas/listado-historial-vacunas.component';
 import { RegistrarHistorialVacunasComponent } from '../historial/components/registrar-historial-vacunas/registrar-historial-vacunas.component';
 import { ListadoMascotaComponent } from '../mascota/components/listado-mascota/listado-mascota.component';
@@ -53,9 +56,11 @@ import { RegistrarMascotaComponent } from '../mascota/components/registrar-masco
     AutoCompleteModule,
     InputTextModule,
     CalendarModule,
-    TabViewModule
+    TabViewModule,
+    DialogModule,
+    ToastModule
   ],
-  providers:[DeclaracionService, ConfirmationService]
+  providers:[DeclaracionService, ConfirmationService, MessageService]
  
 })
 export class HomeModule { }

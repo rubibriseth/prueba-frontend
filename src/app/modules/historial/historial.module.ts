@@ -17,8 +17,7 @@ import { RegistrarHistorialVacunasComponent } from './components/registrar-histo
     CommonModule,
     HistorialRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    
+    ReactiveFormsModule
     
   ]
 })

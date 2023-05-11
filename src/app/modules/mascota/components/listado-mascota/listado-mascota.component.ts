@@ -46,7 +46,7 @@ export class ListadoMascotaComponent implements OnInit {
   modalEliminar(id: string){
     console.log('id eliminar', id);
     this.confirmationService.confirm({
-      message: 'Seguro que se desea eliminar?',
+      message: '¿Seguro que desea eliminar?',
       header: 'Mensaje de Confirmación',
       icon: 'fa fa-question-circle',
       accept: () => {

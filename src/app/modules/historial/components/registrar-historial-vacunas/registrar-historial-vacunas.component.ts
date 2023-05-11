@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Mascota } from 'src/app/models/mascota.model';
 import { HistorialVacuna } from 'src/app/models/historialVacuna.model';
 import { SubjectHistorialVacunaService } from 'src/app/core/services/subject-historialVacuna.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-registrar-historial-vacunas',
@@ -29,9 +30,10 @@ export class RegistrarHistorialVacunasComponent implements OnInit, OnDestroy {
     private _declaracionService: DeclaracionService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private _historialVacunaService: SubjectHistorialVacunaService){
-
-  }
+    private _historialVacunaService: SubjectHistorialVacunaService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService) 
+  {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -94,30 +96,40 @@ export class RegistrarHistorialVacunasComponent implements OnInit, OnDestroy {
   }
 
   registrarHistorialVacuna(){
-    if(this.form.invalid){
-      this.form.markAllAsTouched();
+    if(this.listaMascota.length == 0){
+      this.showMensaje();
 
     }else{
-      let body = this.bodyHistorialVacuna();
+      if(this.form.invalid){
+        this.form.markAllAsTouched();
+
+      }else{
+        let body = this.bodyHistorialVacuna();
   
-      this._declaracionService.registrarHistorialVacuna(body).subscribe( rs => {      
-        this.router.navigateByUrl("/home/historial-vacunas").then();
-      });
-  }
+        this._declaracionService.registrarHistorialVacuna(body).subscribe( rs => {      
+          this.router.navigateByUrl("/home/historial-vacunas").then();
+        });
+      }      
+    }
 
   }
 
   actualizarHistorialVacuna(){
-    if(this.form.invalid){
-      this.form.markAllAsTouched();
+    if(this.listaMascota.length == 0){
+      this.showMensaje();
 
     }else{
-      let body = this.bodyHistorialVacuna();      
-  
-      this._declaracionService.actualizarHistorialVacuna(body, this.dataHistorial.idHistorial || '').subscribe( rs => {      
-        this.router.navigateByUrl("/home/historial-vacunas").then();
-      });
-    }
+      if(this.form.invalid){
+        this.form.markAllAsTouched();
+
+      }else{
+        let body = this.bodyHistorialVacuna();      
+    
+        this._declaracionService.actualizarHistorialVacuna(body, this.dataHistorial.idHistorial || '').subscribe( rs => {      
+          this.router.navigateByUrl("/home/historial-vacunas").then();
+        });
+      }
+    }  
   }
 
   filterMascota(event: any) {
@@ -156,6 +168,10 @@ export class RegistrarHistorialVacunasComponent implements OnInit, OnDestroy {
       observacion: this.form.get('observacion')?.value,
       estado: this.form.get('estado')?.value
     } as Mascota
+  }
+
+  showMensaje() {
+    this.messageService.add({ severity: 'warn', summary: 'ERROR', detail: 'Debe registrar una Mascota previamente' });
   }
 
 }
