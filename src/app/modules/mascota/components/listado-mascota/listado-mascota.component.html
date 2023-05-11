@@ -1,0 +1,67 @@
+
+  <div class="container">
+    <div class="mb-4">
+        <p-toolbar>
+            <div class="p-toolbar-group-start">
+                <h5 class="m-0">Listado de las Mascotas</h5>
+                    
+            </div>
+            <div class="p-toolbar-group-end">
+                <span class="p-input-icon-left">
+                    <button pButton pRipple label="Nuevo" icon="pi pi-plus" class="p-button-success mr-2" (click)="registrarMascota()"></button>
+                </span>
+            </div>
+        </p-toolbar>
+    </div>
+
+    <div class="">
+        <p-table
+            #dt
+            [value]="this.listaMascota"
+            [rows]="5"
+            [paginator]="true"
+            [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+            [tableStyle]="{ 'min-width': '75rem' }"
+            
+            [rowHover]="true"
+            dataKey="id"
+            currentPageReportTemplate=""
+            [showCurrentPageReport]="true">
+
+            <!-- <ng-template pTemplate="caption">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="m-0">LISTADO DE LAS MASCOTAS</h5>
+                    <span class="p-input-icon-left">
+                        <button pButton pRipple label="Nuevo" icon="pi pi-plus" class="p-button-success mr-2" (click)="registrarMascota()"></button>
+                    </span>
+                </div>
+            </ng-template> -->
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="idMascota" style="min-width:10rem">ID <p-sortIcon field="idMascota"></p-sortIcon></th>
+                    <th pSortableColumn="nombre" > Nombre Mascota <p-sortIcon field="nombre"></p-sortIcon></th>
+                    <th pSortableColumn="raza" style="min-width:10rem"> Raza <p-sortIcon field="raza"></p-sortIcon></th>
+                    <th pSortableColumn="edad" style="min-width:10rem"> Edad <p-sortIcon field="edad"></p-sortIcon></th>
+                    <th pSortableColumn="peso" style="min-width:10rem"> Peso <p-sortIcon field="peso"></p-sortIcon></th>
+                    <th style="min-width:10rem;"> Acciones </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-mascota>
+                <tr>
+                    <td>{{ mascota.idMascota }}</td>
+                    <td>{{ mascota.nombre }}</td>
+                    <td>{{ mascota.raza }}</td>
+                    <td>{{ mascota.edad }}</td>
+                    <td>{{ mascota.peso }}</td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-primary me-3" (click)="openActualizar(mascota)"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="modalEliminar(mascota.idMascota)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" [style]="{width: '40vw'}"></p-confirmDialog>

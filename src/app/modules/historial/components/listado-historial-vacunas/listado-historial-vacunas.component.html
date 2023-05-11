@@ -1,0 +1,62 @@
+
+<div class="container">
+    <div class="mb-4">
+        <p-toolbar>
+            <div class="p-toolbar-group-start">
+                <h5 class="m-0">Listado del Historial de Vacunas</h5>
+                    
+            </div>
+            <div class="p-toolbar-group-end">
+                <span class="p-input-icon-left">
+                    <button pButton pRipple label="Nuevo" icon="pi pi-plus" class="p-button-success mr-2" (click)="registrarHistorialVacuna()"></button>
+                </span>
+            </div>
+        </p-toolbar>
+    </div>
+
+    <div class="">
+        <p-table
+            #dt
+            [value]="this.listaHistorialVacuna"
+            [rows]="5"
+            [paginator]="true"
+            [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+            [tableStyle]="{ 'min-width': '75rem' }"
+            
+            [rowHover]="true"
+            dataKey="id"
+            currentPageReportTemplate=""
+            [showCurrentPageReport]="true">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="idHistorial" style="min-width:5rem">Nro <p-sortIcon field="idHistorial"></p-sortIcon></th>
+                    <th pSortableColumn="mascota.nombre" style="min-width:10rem"> Mascota <p-sortIcon field="nombre"></p-sortIcon></th>
+                    <th pSortableColumn="tipoVacuna" style="min-width:10rem">Tipo Vacuna <p-sortIcon field="tipoVacuna"></p-sortIcon></th>
+                    <th pSortableColumn="fecha" style="min-width:5rem"> Fecha <p-sortIcon field="fecha"></p-sortIcon></th>
+                    <th pSortableColumn="observacion" style="min-width:15rem"> Observacion <p-sortIcon field="observacion"></p-sortIcon></th>
+                    <th pSortableColumn="estado" style="min-width:5rem"> Estado <p-sortIcon field="estado"></p-sortIcon></th>
+                    <th style="min-width:8rem;"> Acciones </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-historial>
+                <tr>
+                    <td>{{ historial.idHistorial }}</td>
+                    <td>{{ historial.mascota.nombre }}</td>
+                    <td>{{ historial.tipoVacuna }}</td>
+                    <td>{{ historial.fecha | date:'dd-MM-yyyy'}}</td>
+                    <td>{{ historial.observacion }}</td>
+                    <td>{{ historial.estado }}</td>
+                    <td>
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-primary me-2" (click)="openActualizar(historial)"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="modalEliminar(historial.idHistorial)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" [style]="{width: '40vw'}"></p-confirmDialog>
+

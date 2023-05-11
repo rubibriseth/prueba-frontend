@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+.g-borderStyle{
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(66, 139, 202, 1);
+    border-radius: 4px;
+    min-height: 480px;
+  }
+
+  .g-titleStyle{
+    font-family: 'Arial Normal', 'Arial', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: linear-gradient(180deg, rgba(66, 139, 202, 1) 0%, rgba(66, 139, 202, 1) 0%, rgba(53, 126, 189, 1) 100%, rgba(53, 126, 189, 1) 100%);
+  }
